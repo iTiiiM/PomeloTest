@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF6249810F07281E2C743442 /* Pods_PomeloTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D0EE1A4129CC83ABAD1A9AC /* Pods_PomeloTest.framework */; };
 		DA2B580E24EA6E3900548761 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B580D24EA6E3900548761 /* AppDelegate.swift */; };
 		DA2B581024EA6E3900548761 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B580F24EA6E3900548761 /* SceneDelegate.swift */; };
 		DA2B581224EA6E3900548761 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B581124EA6E3900548761 /* ViewController.swift */; };
@@ -18,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D20DF80435E356383EB430C /* Pods-PomeloTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PomeloTest.release.xcconfig"; path = "Target Support Files/Pods-PomeloTest/Pods-PomeloTest.release.xcconfig"; sourceTree = "<group>"; };
+		77D781F69B30A7993DCB12A0 /* Pods-PomeloTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PomeloTest.debug.xcconfig"; path = "Target Support Files/Pods-PomeloTest/Pods-PomeloTest.debug.xcconfig"; sourceTree = "<group>"; };
+		9D0EE1A4129CC83ABAD1A9AC /* Pods_PomeloTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PomeloTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA2B580A24EA6E3900548761 /* PomeloTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PomeloTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA2B580D24EA6E3900548761 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA2B580F24EA6E3900548761 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,17 +39,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF6249810F07281E2C743442 /* Pods_PomeloTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C91C65532F64AEB3F0082873 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				77D781F69B30A7993DCB12A0 /* Pods-PomeloTest.debug.xcconfig */,
+				1D20DF80435E356383EB430C /* Pods-PomeloTest.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CB1EF0B8EC151F30668BF70C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9D0EE1A4129CC83ABAD1A9AC /* Pods_PomeloTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DA2B580124EA6E3900548761 = {
 			isa = PBXGroup;
 			children = (
 				DA2B580C24EA6E3900548761 /* PomeloTest */,
 				DA2B580B24EA6E3900548761 /* Products */,
+				C91C65532F64AEB3F0082873 /* Pods */,
+				CB1EF0B8EC151F30668BF70C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,9 +105,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA2B581E24EA6E3B00548761 /* Build configuration list for PBXNativeTarget "PomeloTest" */;
 			buildPhases = (
+				62F8841E665655533068535D /* [CP] Check Pods Manifest.lock */,
 				DA2B580624EA6E3900548761 /* Sources */,
 				DA2B580724EA6E3900548761 /* Frameworks */,
 				DA2B580824EA6E3900548761 /* Resources */,
+				CBE906584B9CBC73DE54C82E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -139,6 +166,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		62F8841E665655533068535D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PomeloTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CBE906584B9CBC73DE54C82E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PomeloTest/Pods-PomeloTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PomeloTest/Pods-PomeloTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PomeloTest/Pods-PomeloTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DA2B580624EA6E3900548761 /* Sources */ = {
@@ -290,6 +359,7 @@
 		};
 		DA2B581F24EA6E3B00548761 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77D781F69B30A7993DCB12A0 /* Pods-PomeloTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -308,6 +378,7 @@
 		};
 		DA2B582024EA6E3B00548761 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D20DF80435E356383EB430C /* Pods-PomeloTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
