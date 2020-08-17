@@ -13,6 +13,9 @@ enum DistanceMetrics: String {
 }
 
 class StoreLocationCell: UITableViewCell {
+    
+    static let cellId = "StoreLocationCell"
+    static let nibName = "StoreLocationCell"
 
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var aliasLabel: UILabel!
