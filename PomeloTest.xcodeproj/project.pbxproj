@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,8 @@
 		DA2B581A24EA6E3B00548761 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2B581824EA6E3B00548761 /* LaunchScreen.storyboard */; };
 		DA2B582324EA711C00548761 /* StoreLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B582124EA711C00548761 /* StoreLocationCell.swift */; };
 		DA2B582424EA711C00548761 /* StoreLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA2B582224EA711C00548761 /* StoreLocationCell.xib */; };
+		DAF8C11F24EAD515001BB026 /* StoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8C11E24EAD515001BB026 /* StoreLocation.swift */; };
+		DAF8C12124EAD52D001BB026 /* StoreLocationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8C12024EAD52D001BB026 /* StoreLocationInformation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		DA2B581B24EA6E3B00548761 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA2B582124EA711C00548761 /* StoreLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocationCell.swift; sourceTree = "<group>"; };
 		DA2B582224EA711C00548761 /* StoreLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreLocationCell.xib; sourceTree = "<group>"; };
+		DAF8C11E24EAD515001BB026 /* StoreLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocation.swift; sourceTree = "<group>"; };
+		DAF8C12024EAD52D001BB026 /* StoreLocationInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocationInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +56,6 @@
 				77D781F69B30A7993DCB12A0 /* Pods-PomeloTest.debug.xcconfig */,
 				1D20DF80435E356383EB430C /* Pods-PomeloTest.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -85,6 +88,7 @@
 		DA2B580C24EA6E3900548761 /* PomeloTest */ = {
 			isa = PBXGroup;
 			children = (
+				DAF8C11D24EAD4FF001BB026 /* New Group */,
 				DA2B580D24EA6E3900548761 /* AppDelegate.swift */,
 				DA2B580F24EA6E3900548761 /* SceneDelegate.swift */,
 				DA2B581124EA6E3900548761 /* ViewController.swift */,
@@ -96,6 +100,15 @@
 				DA2B582224EA711C00548761 /* StoreLocationCell.xib */,
 			);
 			path = PomeloTest;
+			sourceTree = "<group>";
+		};
+		DAF8C11D24EAD4FF001BB026 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				DAF8C11E24EAD515001BB026 /* StoreLocation.swift */,
+				DAF8C12024EAD52D001BB026 /* StoreLocationInformation.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,7 +228,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA2B582324EA711C00548761 /* StoreLocationCell.swift in Sources */,
+				DAF8C11F24EAD515001BB026 /* StoreLocation.swift in Sources */,
 				DA2B581224EA6E3900548761 /* ViewController.swift in Sources */,
+				DAF8C12124EAD52D001BB026 /* StoreLocationInformation.swift in Sources */,
 				DA2B580E24EA6E3900548761 /* AppDelegate.swift in Sources */,
 				DA2B581024EA6E3900548761 /* SceneDelegate.swift in Sources */,
 			);
