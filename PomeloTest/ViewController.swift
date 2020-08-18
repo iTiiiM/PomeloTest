@@ -16,7 +16,8 @@ class ViewController: UIViewController {
     var storeLocations: StoreLocation?
     var filteredLocations: [StoreLocationInformation]?
     let locationManager = CLLocationManager()
-    var location: CLLocation?
+    var storeLocation: [CLLocation] = []
+    var currentLocation: CLLocation?
     var isUpdating = false
 
     @IBAction func didTapGetCurrentLocation(_ sender: Any) {
@@ -30,9 +31,13 @@ class ViewController: UIViewController {
         if isUpdating {
             stopLocationManager()
         } else {
-            location = nil
+            currentLocation = nil
             startLocationManager()
         }
+    }
+    
+    func distanceFromCurrentLocation(source: CLLocation, destination: CLLocation) -> Double {
+        return round(100*(source.distance(from: destination) / 1000)) / 100
     }
     
     override func viewDidLoad() {
@@ -51,7 +56,7 @@ class ViewController: UIViewController {
                     do {
                         self.storeLocations = try
                             JSONDecoder().decode(StoreLocation.self, from: data)
-                        self.filteredLocations = self.storeLocations?.pickup.filter { $0.active }
+                        self.filteredLocations = self.storeLocations?.pickup.filter { $0.active && !$0.city.isEmpty && !$0.alias.isEmpty }
                         self.storeLocationTableView.reloadData()
                     } catch let error as NSError {
                         print("Failed to load: \(error.localizedDescription)")
@@ -71,7 +76,7 @@ extension ViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        location = locations.last
+        currentLocation = locations.last
         stopLocationManager()
     }
     
@@ -105,7 +110,8 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StoreLocationCell.cellId, for: indexPath) as! StoreLocationCell
-        cell.configCell(store: filteredLocations![indexPath.row], latitude: location?.coordinate.latitude ?? 0.0, longtitude: location?.coordinate.longitude ?? 0.0)
+        let distanceFromcurrentLocation = distanceFromCurrentLocation(source: currentLocation ?? CLLocation(latitude: 0.0, longitude: 0.0), destination: CLLocation(latitude: filteredLocations![indexPath.row].latitude ?? 0.0, longitude: filteredLocations![indexPath.row].longitude ?? 0.0))
+        cell.configCell(store: filteredLocations![indexPath.row], distanceFromCurrentLocation: distanceFromcurrentLocation )
         return cell
     }
 }

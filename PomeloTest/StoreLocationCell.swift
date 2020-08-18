@@ -36,11 +36,11 @@ class StoreLocationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configCell(store: StoreLocationInformation, latitude: Double, longtitude: Double) {
+    func configCell(store: StoreLocationInformation, distanceFromCurrentLocation: Double) {
         self.cityLabel.text = store.city
         self.addressLabel.text = store.address1
         self.aliasLabel.text = store.alias
-        self.distanceFromCurrentLocationLabel.text = "\(latitude) \(longtitude)"
+        self.distanceFromCurrentLocationLabel.text = "\(distanceFromCurrentLocation)"
     }
     
 }

@@ -13,4 +13,6 @@ struct StoreLocationInformation: Codable {
     let city: String
     let address1: String
     let active: Bool
+    let latitude: Double?
+    let longitude: Double?
 }
