@@ -23,8 +23,8 @@ class StoreLocationCell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var distanceFromCurrentLocationLabel: UILabel!
     @IBOutlet weak var distanceMetricsLabel: UILabel!
+    @IBOutlet weak var distanceStackView: UIStackView!
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,11 +36,16 @@ class StoreLocationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configCell(store: StoreLocationInformation, distanceFromCurrentLocation: Double) {
+    func configCell(store: StoreLocationInformation, distanceFromCurrentLocation: Int) {
         self.cityLabel.text = store.city
         self.addressLabel.text = store.address1
         self.aliasLabel.text = store.alias
-        self.distanceFromCurrentLocationLabel.text = "\(distanceFromCurrentLocation)"
+        if distanceFromCurrentLocation == -1 {
+            self.distanceStackView.isHidden = true
+        } else {
+            self.distanceStackView.isHidden = false
+            self.distanceFromCurrentLocationLabel.text = "\(distanceFromCurrentLocation)"
+        }
     }
     
 }

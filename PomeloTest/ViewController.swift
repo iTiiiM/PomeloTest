@@ -33,11 +33,17 @@ class ViewController: UIViewController {
         } else {
             currentLocation = nil
             startLocationManager()
+            storeLocationTableView.reloadData()
+
         }
     }
     
-    func distanceFromCurrentLocation(source: CLLocation, destination: CLLocation) -> Double {
-        return round(100*(source.distance(from: destination) / 1000)) / 100
+    func distanceFromCurrentLocation(source: CLLocation?, destination: CLLocation) -> Int {
+        if source == nil {
+            return -1
+        } else {
+            return Int(round((source!.distance(from: destination) / 1000)))
+        }
     }
     
     override func viewDidLoad() {
@@ -84,7 +90,6 @@ extension ViewController: CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         locationManager.startUpdatingLocation()
-        storeLocationTableView.reloadData()
         isUpdating = true
     }
     
@@ -110,7 +115,7 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StoreLocationCell.cellId, for: indexPath) as! StoreLocationCell
-        let distanceFromcurrentLocation = distanceFromCurrentLocation(source: currentLocation ?? CLLocation(latitude: 0.0, longitude: 0.0), destination: CLLocation(latitude: filteredLocations![indexPath.row].latitude ?? 0.0, longitude: filteredLocations![indexPath.row].longitude ?? 0.0))
+        let distanceFromcurrentLocation = distanceFromCurrentLocation(source: currentLocation, destination: CLLocation(latitude: filteredLocations![indexPath.row].latitude ?? 0.0, longitude: filteredLocations![indexPath.row].longitude ?? 0.0))
         cell.configCell(store: filteredLocations![indexPath.row], distanceFromCurrentLocation: distanceFromcurrentLocation )
         return cell
     }

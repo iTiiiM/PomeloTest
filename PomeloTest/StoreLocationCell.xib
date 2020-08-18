@@ -39,16 +39,16 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="800" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xXE-WJ-dYo">
+                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="800" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xXE-WJ-dYo">
                         <rect key="frame" x="293" y="55" width="68" height="20.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZT-p6-jOc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="xxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZT-p6-jOc">
                                 <rect key="frame" x="0.0" y="0.0" width="34.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyM-vI-tYP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="800" text="Km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyM-vI-tYP">
                                 <rect key="frame" x="42.5" y="0.0" width="25.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -72,6 +72,7 @@
                 <outlet property="cityLabel" destination="nhb-05-tEL" id="JM2-kk-pr1"/>
                 <outlet property="distanceFromCurrentLocationLabel" destination="TZT-p6-jOc" id="0QP-I6-cit"/>
                 <outlet property="distanceMetricsLabel" destination="fyM-vI-tYP" id="zBL-zY-IvP"/>
+                <outlet property="distanceStackView" destination="xXE-WJ-dYo" id="bbb-R0-PWm"/>
             </connections>
             <point key="canvasLocation" x="187.68115942028987" y="181.47321428571428"/>
         </tableViewCell>
