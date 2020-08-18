@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 enum DistanceMetrics: String {
     case kilometer = "Km"
 }
@@ -35,10 +36,11 @@ class StoreLocationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configCell(store: StoreLocationInformation) {
+    func configCell(store: StoreLocationInformation, latitude: Double, longtitude: Double) {
         self.cityLabel.text = store.city
         self.addressLabel.text = store.address1
         self.aliasLabel.text = store.alias
+        self.distanceFromCurrentLocationLabel.text = "\(latitude) \(longtitude)"
     }
     
 }
