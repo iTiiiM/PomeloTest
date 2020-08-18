@@ -10,14 +10,14 @@
 		AF6249810F07281E2C743442 /* Pods_PomeloTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D0EE1A4129CC83ABAD1A9AC /* Pods_PomeloTest.framework */; };
 		DA2B580E24EA6E3900548761 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B580D24EA6E3900548761 /* AppDelegate.swift */; };
 		DA2B581024EA6E3900548761 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B580F24EA6E3900548761 /* SceneDelegate.swift */; };
-		DA2B581224EA6E3900548761 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B581124EA6E3900548761 /* ViewController.swift */; };
+		DA2B581224EA6E3900548761 /* PickupStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B581124EA6E3900548761 /* PickupStoreViewController.swift */; };
 		DA2B581524EA6E3900548761 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2B581324EA6E3900548761 /* Main.storyboard */; };
 		DA2B581724EA6E3B00548761 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA2B581624EA6E3B00548761 /* Assets.xcassets */; };
 		DA2B581A24EA6E3B00548761 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2B581824EA6E3B00548761 /* LaunchScreen.storyboard */; };
 		DA2B582324EA711C00548761 /* StoreLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B582124EA711C00548761 /* StoreLocationCell.swift */; };
 		DA2B582424EA711C00548761 /* StoreLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA2B582224EA711C00548761 /* StoreLocationCell.xib */; };
-		DAF8C11F24EAD515001BB026 /* StoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8C11E24EAD515001BB026 /* StoreLocation.swift */; };
-		DAF8C12124EAD52D001BB026 /* StoreLocationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8C12024EAD52D001BB026 /* StoreLocationInformation.swift */; };
+		DAF8C11F24EAD515001BB026 /* PickupStoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8C11E24EAD515001BB026 /* PickupStoreLocation.swift */; };
+		DAF8C12124EAD52D001BB026 /* PickupStoreLocationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8C12024EAD52D001BB026 /* PickupStoreLocationInformation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,15 +27,15 @@
 		DA2B580A24EA6E3900548761 /* PomeloTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PomeloTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA2B580D24EA6E3900548761 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA2B580F24EA6E3900548761 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DA2B581124EA6E3900548761 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DA2B581124EA6E3900548761 /* PickupStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupStoreViewController.swift; sourceTree = "<group>"; };
 		DA2B581424EA6E3900548761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA2B581624EA6E3B00548761 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA2B581924EA6E3B00548761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA2B581B24EA6E3B00548761 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA2B582124EA711C00548761 /* StoreLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocationCell.swift; sourceTree = "<group>"; };
 		DA2B582224EA711C00548761 /* StoreLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreLocationCell.xib; sourceTree = "<group>"; };
-		DAF8C11E24EAD515001BB026 /* StoreLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocation.swift; sourceTree = "<group>"; };
-		DAF8C12024EAD52D001BB026 /* StoreLocationInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocationInformation.swift; sourceTree = "<group>"; };
+		DAF8C11E24EAD515001BB026 /* PickupStoreLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupStoreLocation.swift; sourceTree = "<group>"; };
+		DAF8C12024EAD52D001BB026 /* PickupStoreLocationInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupStoreLocationInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +67,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DA10AE5724EC296F00F226DD /* PickupStore */ = {
+			isa = PBXGroup;
+			children = (
+				DA2B581124EA6E3900548761 /* PickupStoreViewController.swift */,
+				DAF8C11D24EAD4FF001BB026 /* Model */,
+			);
+			path = PickupStore;
+			sourceTree = "<group>";
+		};
 		DA2B580124EA6E3900548761 = {
 			isa = PBXGroup;
 			children = (
@@ -88,10 +97,9 @@
 		DA2B580C24EA6E3900548761 /* PomeloTest */ = {
 			isa = PBXGroup;
 			children = (
-				DAF8C11D24EAD4FF001BB026 /* New Group */,
+				DA10AE5724EC296F00F226DD /* PickupStore */,
 				DA2B580D24EA6E3900548761 /* AppDelegate.swift */,
 				DA2B580F24EA6E3900548761 /* SceneDelegate.swift */,
-				DA2B581124EA6E3900548761 /* ViewController.swift */,
 				DA2B581324EA6E3900548761 /* Main.storyboard */,
 				DA2B581624EA6E3B00548761 /* Assets.xcassets */,
 				DA2B581824EA6E3B00548761 /* LaunchScreen.storyboard */,
@@ -102,13 +110,13 @@
 			path = PomeloTest;
 			sourceTree = "<group>";
 		};
-		DAF8C11D24EAD4FF001BB026 /* New Group */ = {
+		DAF8C11D24EAD4FF001BB026 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DAF8C11E24EAD515001BB026 /* StoreLocation.swift */,
-				DAF8C12024EAD52D001BB026 /* StoreLocationInformation.swift */,
+				DAF8C11E24EAD515001BB026 /* PickupStoreLocation.swift */,
+				DAF8C12024EAD52D001BB026 /* PickupStoreLocationInformation.swift */,
 			);
-			path = "New Group";
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,9 +236,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA2B582324EA711C00548761 /* StoreLocationCell.swift in Sources */,
-				DAF8C11F24EAD515001BB026 /* StoreLocation.swift in Sources */,
-				DA2B581224EA6E3900548761 /* ViewController.swift in Sources */,
-				DAF8C12124EAD52D001BB026 /* StoreLocationInformation.swift in Sources */,
+				DAF8C11F24EAD515001BB026 /* PickupStoreLocation.swift in Sources */,
+				DA2B581224EA6E3900548761 /* PickupStoreViewController.swift in Sources */,
+				DAF8C12124EAD52D001BB026 /* PickupStoreLocationInformation.swift in Sources */,
 				DA2B580E24EA6E3900548761 /* AppDelegate.swift in Sources */,
 				DA2B581024EA6E3900548761 /* SceneDelegate.swift in Sources */,
 			);

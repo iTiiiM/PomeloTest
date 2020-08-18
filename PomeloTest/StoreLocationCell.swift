@@ -36,7 +36,7 @@ class StoreLocationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configCell(store: StoreLocationInformation, distanceFromCurrentLocation: Int) {
+    func configCell(store: PickupStoreLocationInformation, distanceFromCurrentLocation: Int) {
         self.cityLabel.text = store.city
         self.addressLabel.text = store.address1
         self.aliasLabel.text = store.alias

@@ -10,11 +10,10 @@ import UIKit
 import Alamofire
 import CoreLocation
 
-class ViewController: UIViewController {
+class PickupStoreViewController: UIViewController {
     
     @IBOutlet weak var storeLocationTableView: UITableView!
-    var storeLocations: StoreLocation?
-    var filteredLocations: [StoreLocationInformation]?
+    var filteredLocations: [PickupStoreLocationInformation]?
     let locationManager = CLLocationManager()
     var storeLocation: [CLLocation] = []
     var currentLocation: CLLocation?
@@ -63,9 +62,9 @@ class ViewController: UIViewController {
             case .success( _):
                 if let data = response.data {
                     do {
-                        self.storeLocations = try
-                            JSONDecoder().decode(StoreLocation.self, from: data)
-                        self.filteredLocations = self.storeLocations?.pickup.filter { $0.active && !$0.city.isEmpty && !$0.alias.isEmpty }
+                        let storeLocations = try
+                            JSONDecoder().decode(PickupStoreLocation.self, from: data)
+                        self.filteredLocations = storeLocations.pickup.filter { $0.active && !$0.city.isEmpty && !$0.alias.isEmpty }
                         self.storeLocationTableView.reloadData()
                     } catch let error as NSError {
                         print("Failed to load: \(error.localizedDescription)")
@@ -79,7 +78,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: CLLocationManagerDelegate {
+extension PickupStoreViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         stopLocationManager()
     }
@@ -105,13 +104,13 @@ extension ViewController: CLLocationManagerDelegate {
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension PickupStoreViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension PickupStoreViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredLocations?.count ?? 0
     }

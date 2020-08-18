@@ -8,11 +8,20 @@
 
 import Foundation
 
-struct StoreLocationInformation: Codable {
+struct PickupStoreLocationInformation: Codable {
     let alias: String
     let city: String
     let address1: String
     let active: Bool
     let latitude: Double?
     let longitude: Double?
+    
+    enum CodingKeys: String, CodingKey {
+        case alias
+        case city
+        case address1
+        case active
+        case latitude
+        case longitude
+    }
 }
