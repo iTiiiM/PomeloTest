@@ -14,8 +14,8 @@
 		DA2B581524EA6E3900548761 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2B581324EA6E3900548761 /* Main.storyboard */; };
 		DA2B581724EA6E3B00548761 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA2B581624EA6E3B00548761 /* Assets.xcassets */; };
 		DA2B581A24EA6E3B00548761 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2B581824EA6E3B00548761 /* LaunchScreen.storyboard */; };
-		DA2B582324EA711C00548761 /* StoreLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B582124EA711C00548761 /* StoreLocationCell.swift */; };
-		DA2B582424EA711C00548761 /* StoreLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA2B582224EA711C00548761 /* StoreLocationCell.xib */; };
+		DA2B582324EA711C00548761 /* PickupStoreLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B582124EA711C00548761 /* PickupStoreLocationCell.swift */; };
+		DA2B582424EA711C00548761 /* PickupStoreLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA2B582224EA711C00548761 /* PickupStoreLocationCell.xib */; };
 		DAF8C11F24EAD515001BB026 /* PickupStoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8C11E24EAD515001BB026 /* PickupStoreLocation.swift */; };
 		DAF8C12124EAD52D001BB026 /* PickupStoreLocationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8C12024EAD52D001BB026 /* PickupStoreLocationInformation.swift */; };
 /* End PBXBuildFile section */
@@ -32,8 +32,8 @@
 		DA2B581624EA6E3B00548761 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA2B581924EA6E3B00548761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA2B581B24EA6E3B00548761 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DA2B582124EA711C00548761 /* StoreLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreLocationCell.swift; sourceTree = "<group>"; };
-		DA2B582224EA711C00548761 /* StoreLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreLocationCell.xib; sourceTree = "<group>"; };
+		DA2B582124EA711C00548761 /* PickupStoreLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupStoreLocationCell.swift; sourceTree = "<group>"; };
+		DA2B582224EA711C00548761 /* PickupStoreLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickupStoreLocationCell.xib; sourceTree = "<group>"; };
 		DAF8C11E24EAD515001BB026 /* PickupStoreLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupStoreLocation.swift; sourceTree = "<group>"; };
 		DAF8C12024EAD52D001BB026 /* PickupStoreLocationInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupStoreLocationInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +70,7 @@
 		DA10AE5724EC296F00F226DD /* PickupStore */ = {
 			isa = PBXGroup;
 			children = (
+				DAEE53FB24EC2EE800588EB0 /* Views */,
 				DA2B581124EA6E3900548761 /* PickupStoreViewController.swift */,
 				DAF8C11D24EAD4FF001BB026 /* Model */,
 			);
@@ -104,10 +105,17 @@
 				DA2B581624EA6E3B00548761 /* Assets.xcassets */,
 				DA2B581824EA6E3B00548761 /* LaunchScreen.storyboard */,
 				DA2B581B24EA6E3B00548761 /* Info.plist */,
-				DA2B582124EA711C00548761 /* StoreLocationCell.swift */,
-				DA2B582224EA711C00548761 /* StoreLocationCell.xib */,
 			);
 			path = PomeloTest;
+			sourceTree = "<group>";
+		};
+		DAEE53FB24EC2EE800588EB0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA2B582124EA711C00548761 /* PickupStoreLocationCell.swift */,
+				DA2B582224EA711C00548761 /* PickupStoreLocationCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		DAF8C11D24EAD4FF001BB026 /* Model */ = {
@@ -179,7 +187,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA2B582424EA711C00548761 /* StoreLocationCell.xib in Resources */,
+				DA2B582424EA711C00548761 /* PickupStoreLocationCell.xib in Resources */,
 				DA2B581A24EA6E3B00548761 /* LaunchScreen.storyboard in Resources */,
 				DA2B581724EA6E3B00548761 /* Assets.xcassets in Resources */,
 				DA2B581524EA6E3900548761 /* Main.storyboard in Resources */,
@@ -235,7 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA2B582324EA711C00548761 /* StoreLocationCell.swift in Sources */,
+				DA2B582324EA711C00548761 /* PickupStoreLocationCell.swift in Sources */,
 				DAF8C11F24EAD515001BB026 /* PickupStoreLocation.swift in Sources */,
 				DA2B581224EA6E3900548761 /* PickupStoreViewController.swift in Sources */,
 				DAF8C12124EAD52D001BB026 /* PickupStoreLocationInformation.swift in Sources */,

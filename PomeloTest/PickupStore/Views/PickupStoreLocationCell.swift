@@ -13,10 +13,10 @@ enum DistanceMetrics: String {
     case kilometer = "Km"
 }
 
-class StoreLocationCell: UITableViewCell {
+class PickupStoreLocationCell: UITableViewCell {
     
-    static let cellId = "StoreLocationCell"
-    static let nibName = "StoreLocationCell"
+    static let cellId = "PickupStoreLocationCell"
+    static let nibName = "PickupStoreLocationCell"
 
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var aliasLabel: UILabel!

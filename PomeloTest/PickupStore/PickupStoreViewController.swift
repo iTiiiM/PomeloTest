@@ -14,7 +14,12 @@ import PopupDialog
 class PickupStoreViewController: UIViewController {
     
     @IBOutlet weak var storeLocationTableView: UITableView!
-    var filteredLocations: [PickupStoreLocationInformation]?
+    var filteredLocations: [PickupStoreLocationInformation]? {
+        didSet {
+            self.storeLocationTableView.reloadData()
+            
+        }
+    }
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var isUpdating = false
@@ -51,7 +56,7 @@ class PickupStoreViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        storeLocationTableView.register(UINib(nibName: StoreLocationCell.nibName, bundle: nil), forCellReuseIdentifier: StoreLocationCell.cellId)
+        storeLocationTableView.register(UINib(nibName: PickupStoreLocationCell.nibName, bundle: nil), forCellReuseIdentifier: PickupStoreLocationCell.cellId)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +74,6 @@ class PickupStoreViewController: UIViewController {
                         let storeLocations = try
                             JSONDecoder().decode(PickupStoreLocation.self, from: data)
                         self.filteredLocations = storeLocations.pickup.filter { $0.active && !$0.city.isEmpty && !$0.alias.isEmpty }
-                        self.storeLocationTableView.reloadData()
                     } catch let error as NSError {
                         let popUpDialog = PopupDialog(title: "Failed to load: \(error.localizedDescription)", message: "Please try again")
                         self.present(popUpDialog, animated: true)
@@ -122,7 +126,7 @@ extension PickupStoreViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StoreLocationCell.cellId, for: indexPath) as! StoreLocationCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: PickupStoreLocationCell.cellId, for: indexPath) as! PickupStoreLocationCell
         guard let filteredLocations = filteredLocations,
             let storeLatitude = filteredLocations[indexPath.row].latitude,
             let storeLongitude = filteredLocations[indexPath.row].longitude
