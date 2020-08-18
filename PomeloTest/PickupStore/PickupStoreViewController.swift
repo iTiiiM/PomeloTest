@@ -9,13 +9,13 @@
 import UIKit
 import Alamofire
 import CoreLocation
+import PopupDialog
 
 class PickupStoreViewController: UIViewController {
     
     @IBOutlet weak var storeLocationTableView: UITableView!
     var filteredLocations: [PickupStoreLocationInformation]?
     let locationManager = CLLocationManager()
-    var storeLocation: [CLLocation] = []
     var currentLocation: CLLocation?
     var isUpdating = false
 
@@ -28,7 +28,8 @@ class PickupStoreViewController: UIViewController {
         if authorizationStatus == .notDetermined {
             locationManager.requestWhenInUseAuthorization()
         } else if authorizationStatus == .denied || authorizationStatus == .restricted {
-            print("Please set location service to be enable in settings")
+            let popUpDialog = PopupDialog(title: "Please set location service to be enable in settings", message: "to see nearest store")
+            self.present(popUpDialog, animated: true)
         }
         
         if isUpdating {
@@ -51,6 +52,9 @@ class PickupStoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         storeLocationTableView.register(UINib(nibName: StoreLocationCell.nibName, bundle: nil), forCellReuseIdentifier: StoreLocationCell.cellId)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         fetchPickupStoreLocations()
     }
     
@@ -67,12 +71,14 @@ class PickupStoreViewController: UIViewController {
                         self.filteredLocations = storeLocations.pickup.filter { $0.active && !$0.city.isEmpty && !$0.alias.isEmpty }
                         self.storeLocationTableView.reloadData()
                     } catch let error as NSError {
-                        print("Failed to load: \(error.localizedDescription)")
+                        let popUpDialog = PopupDialog(title: "Failed to load: \(error.localizedDescription)", message: "Please try again")
+                        self.present(popUpDialog, animated: true)
                     }
                 }
                 
             case .failure(let error):
-                print("Request error: \(error.localizedDescription)")
+                let popUpDialog = PopupDialog(title: "Request error: \(error.localizedDescription)", message: "Please try again")
+                self.present(popUpDialog, animated: true)
             }
         }
     }
