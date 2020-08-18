@@ -21,6 +21,10 @@ class ViewController: UIViewController {
     var isUpdating = false
 
     @IBAction func didTapGetCurrentLocation(_ sender: Any) {
+        getCurrentLocation()
+    }
+    
+    func getCurrentLocation() {
         let authorizationStatus = CLLocationManager.authorizationStatus()
         if authorizationStatus == .notDetermined {
             locationManager.requestWhenInUseAuthorization()
@@ -34,7 +38,6 @@ class ViewController: UIViewController {
             currentLocation = nil
             startLocationManager()
             storeLocationTableView.reloadData()
-
         }
     }
     
@@ -45,7 +48,7 @@ class ViewController: UIViewController {
             return Int(round((source!.distance(from: destination) / 1000)))
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         storeLocationTableView.register(UINib(nibName: StoreLocationCell.nibName, bundle: nil), forCellReuseIdentifier: StoreLocationCell.cellId)
@@ -115,8 +118,14 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StoreLocationCell.cellId, for: indexPath) as! StoreLocationCell
-        let distanceFromcurrentLocation = distanceFromCurrentLocation(source: currentLocation, destination: CLLocation(latitude: filteredLocations![indexPath.row].latitude ?? 0.0, longitude: filteredLocations![indexPath.row].longitude ?? 0.0))
-        cell.configCell(store: filteredLocations![indexPath.row], distanceFromCurrentLocation: distanceFromcurrentLocation )
+        guard let filteredLocations = filteredLocations,
+            let storeLatitude = filteredLocations[indexPath.row].latitude,
+            let storeLongitude = filteredLocations[indexPath.row].longitude
+            else { return UITableViewCell() }
+        
+        let storeDistanceFromCurrentLocation = distanceFromCurrentLocation(source: currentLocation, destination: CLLocation(latitude: storeLatitude, longitude: storeLongitude))
+        
+        cell.configCell(store: filteredLocations[indexPath.row], distanceFromCurrentLocation: storeDistanceFromCurrentLocation )
         return cell
     }
 }
