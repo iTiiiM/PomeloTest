@@ -7,5 +7,6 @@ target 'PomeloTest' do
 
   # Pods for PomeloTest
    pod 'Alamofire', '~> 5.2'
+   pod 'PopupDialog', '~> 1.1'
 
 end
