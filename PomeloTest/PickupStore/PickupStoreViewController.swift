@@ -32,57 +32,6 @@ class PickupStoreViewController: UIViewController {
     
     var sortedLocations: [PickupStoreLocationInformation] = []
 
-    @IBAction func didTapGetCurrentLocation(_ sender: Any) {
-        getCurrentLocation()
-    }
-    
-    func sortNearestStoreLocation() {
-        if filteredLocations != nil {
-            //MARK : Tried to add "distanceFromCurrentLocation" attribute to each data in filteredLocations Array.
-            
-            //But the value assign to for loop is only in the loop
-            
-            //I don't know how to assign to itself directly
-            
-            //So I create another variable to recieve it (WHICH IS BAD)
-            for var storeInformation in filteredLocations!  {
-                storeInformation.distanceFromCurrentLocation = getDistanceFromCurrentLocation(source: currentLocation, destination: CLLocation(latitude: storeInformation.latitude!, longitude: storeInformation.longitude!))
-                sortedLocations.append(storeInformation)
-                print(sortedLocations)
-            }
-            filteredLocations = sortedLocations
-            sortedLocations = []
-            filteredLocations?.sort(by: { $0.distanceFromCurrentLocation ?? 0 < $1.distanceFromCurrentLocation ?? 0})
-            self.storeLocationTableView.reloadData()
-        }
-    }
-    
-    
-    func getCurrentLocation() {
-        let authorizationStatus = CLLocationManager.authorizationStatus()
-        if authorizationStatus == .notDetermined {
-            locationManager.requestWhenInUseAuthorization()
-        } else if authorizationStatus == .denied || authorizationStatus == .restricted {
-            let popUpDialog = PopupDialog(title: "Please set location service to be enable in settings", message: "to see nearest store")
-            self.present(popUpDialog, animated: true)
-        }
-        
-        if isUpdating {
-            stopLocationManager()
-        } else {
-            currentLocation = nil
-            startLocationManager()
-        }
-    }
-    
-    func getDistanceFromCurrentLocation(source: CLLocation?, destination: CLLocation) -> Int {
-        if source == nil {
-            return -1
-        } else {
-            return Int(round((source!.distance(from: destination) / 1000)))
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         storeLocationTableView.register(UINib(nibName: PickupStoreLocationCell.nibName, bundle: nil), forCellReuseIdentifier: PickupStoreLocationCell.cellId)
@@ -90,6 +39,10 @@ class PickupStoreViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         fetchPickupStoreLocations()
+    }
+    
+    @IBAction func didTapGetCurrentLocation(_ sender: Any) {
+        getCurrentLocation()
     }
     
     func fetchPickupStoreLocations() {
@@ -115,6 +68,52 @@ class PickupStoreViewController: UIViewController {
             }
         }
     }
+    
+    func sortNearestStoreLocation() {
+           if filteredLocations != nil {
+               //MARK : Tried to add "distanceFromCurrentLocation" attribute to each data in filteredLocations Array.
+               
+               //But the value assign to for loop is only in the loop
+               
+               //I don't know how to assign to itself directly
+               
+               //So I create another variable to recieve it (WHICH IS BAD)
+               for var storeInformation in filteredLocations!  {
+                   storeInformation.distanceFromCurrentLocation = getDistanceFromCurrentLocation(source: currentLocation, destination: CLLocation(latitude: storeInformation.latitude!, longitude: storeInformation.longitude!))
+                   sortedLocations.append(storeInformation)
+                   print(sortedLocations)
+               }
+               filteredLocations = sortedLocations
+               sortedLocations = []
+               filteredLocations?.sort(by: { $0.distanceFromCurrentLocation ?? 0 < $1.distanceFromCurrentLocation ?? 0})
+               self.storeLocationTableView.reloadData()
+           }
+       }
+       
+       func getCurrentLocation() {
+           let authorizationStatus = CLLocationManager.authorizationStatus()
+           if authorizationStatus == .notDetermined {
+               locationManager.requestWhenInUseAuthorization()
+           } else if authorizationStatus == .denied || authorizationStatus == .restricted {
+               let popUpDialog = PopupDialog(title: "Please set location service to be enable in settings", message: "to see nearest store")
+               self.present(popUpDialog, animated: true)
+           }
+           
+           if isUpdating {
+               stopLocationManager()
+           } else {
+               currentLocation = nil
+               startLocationManager()
+           }
+       }
+       
+       func getDistanceFromCurrentLocation(source: CLLocation?, destination: CLLocation) -> Int {
+           if source == nil {
+               return -1
+           } else {
+               return Int(round((source!.distance(from: destination) / 1000)))
+           }
+       }
 }
 
 extension PickupStoreViewController: CLLocationManagerDelegate {
@@ -164,7 +163,7 @@ extension PickupStoreViewController: UITableViewDataSource {
         
         let storeDistanceFromCurrentLocation = getDistanceFromCurrentLocation(source: currentLocation, destination: CLLocation(latitude: storeLatitude, longitude: storeLongitude))
         
-        cell.configCell(store: filteredLocations[indexPath.row], distanceFromCurrentLocation: storeDistanceFromCurrentLocation )
+        cell.configCell(store: filteredLocations[indexPath.row], distanceFromCurrentLocation: storeDistanceFromCurrentLocation)
         return cell
     }
 }
