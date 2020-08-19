@@ -70,8 +70,8 @@
 		DA10AE5724EC296F00F226DD /* PickupStore */ = {
 			isa = PBXGroup;
 			children = (
-				DAEE53FB24EC2EE800588EB0 /* Views */,
 				DA2B581124EA6E3900548761 /* PickupStoreViewController.swift */,
+				DAEE53FB24EC2EE800588EB0 /* Views */,
 				DAF8C11D24EAD4FF001BB026 /* Model */,
 			);
 			path = PickupStore;

@@ -16,6 +16,8 @@ struct PickupStoreLocationInformation: Codable {
     let latitude: Double?
     let longitude: Double?
     
+    var distanceFromCurrentLocation: Int?
+    
     enum CodingKeys: String, CodingKey {
         case alias
         case city

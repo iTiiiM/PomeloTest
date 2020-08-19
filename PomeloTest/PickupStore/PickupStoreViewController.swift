@@ -14,19 +14,49 @@ import PopupDialog
 class PickupStoreViewController: UIViewController {
     
     @IBOutlet weak var storeLocationTableView: UITableView!
+    
+    let locationManager = CLLocationManager()
+    var isUpdating = false
+    
     var filteredLocations: [PickupStoreLocationInformation]? {
         didSet {
             self.storeLocationTableView.reloadData()
-            
         }
     }
-    let locationManager = CLLocationManager()
-    var currentLocation: CLLocation?
-    var isUpdating = false
+    
+    var currentLocation: CLLocation? {
+        didSet {
+            self.storeLocationTableView.reloadData()
+        }
+    }
+    
+    var sortedLocations: [PickupStoreLocationInformation] = []
 
     @IBAction func didTapGetCurrentLocation(_ sender: Any) {
         getCurrentLocation()
     }
+    
+    func sortNearestStoreLocation() {
+        if filteredLocations != nil {
+            //MARK : Tried to add "distanceFromCurrentLocation" attribute to each data in filteredLocations Array.
+            
+            //But the value assign to for loop is only in the loop
+            
+            //I don't know how to assign to itself directly
+            
+            //So I create another variable to recieve it (WHICH IS BAD)
+            for var storeInformation in filteredLocations!  {
+                storeInformation.distanceFromCurrentLocation = getDistanceFromCurrentLocation(source: currentLocation, destination: CLLocation(latitude: storeInformation.latitude!, longitude: storeInformation.longitude!))
+                sortedLocations.append(storeInformation)
+                print(sortedLocations)
+            }
+            filteredLocations = sortedLocations
+            sortedLocations = []
+            filteredLocations?.sort(by: { $0.distanceFromCurrentLocation ?? 0 < $1.distanceFromCurrentLocation ?? 0})
+            self.storeLocationTableView.reloadData()
+        }
+    }
+    
     
     func getCurrentLocation() {
         let authorizationStatus = CLLocationManager.authorizationStatus()
@@ -42,11 +72,10 @@ class PickupStoreViewController: UIViewController {
         } else {
             currentLocation = nil
             startLocationManager()
-            storeLocationTableView.reloadData()
         }
     }
     
-    func distanceFromCurrentLocation(source: CLLocation?, destination: CLLocation) -> Int {
+    func getDistanceFromCurrentLocation(source: CLLocation?, destination: CLLocation) -> Int {
         if source == nil {
             return -1
         } else {
@@ -95,6 +124,7 @@ extension PickupStoreViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = locations.last
+        sortNearestStoreLocation()
         stopLocationManager()
     }
     
@@ -132,7 +162,7 @@ extension PickupStoreViewController: UITableViewDataSource {
             let storeLongitude = filteredLocations[indexPath.row].longitude
             else { return UITableViewCell() }
         
-        let storeDistanceFromCurrentLocation = distanceFromCurrentLocation(source: currentLocation, destination: CLLocation(latitude: storeLatitude, longitude: storeLongitude))
+        let storeDistanceFromCurrentLocation = getDistanceFromCurrentLocation(source: currentLocation, destination: CLLocation(latitude: storeLatitude, longitude: storeLongitude))
         
         cell.configCell(store: filteredLocations[indexPath.row], distanceFromCurrentLocation: storeDistanceFromCurrentLocation )
         return cell
