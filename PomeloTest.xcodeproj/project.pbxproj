@@ -16,6 +16,7 @@
 		DA2B581A24EA6E3B00548761 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2B581824EA6E3B00548761 /* LaunchScreen.storyboard */; };
 		DA2B582324EA711C00548761 /* PickupStoreLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B582124EA711C00548761 /* PickupStoreLocationCell.swift */; };
 		DA2B582424EA711C00548761 /* PickupStoreLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA2B582224EA711C00548761 /* PickupStoreLocationCell.xib */; };
+		DA5D77CE24ED179D003C2A8A /* PickupStoreLocationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D77CD24ED179D003C2A8A /* PickupStoreLocationCellViewModel.swift */; };
 		DAF8C11F24EAD515001BB026 /* PickupStoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8C11E24EAD515001BB026 /* PickupStoreLocation.swift */; };
 		DAF8C12124EAD52D001BB026 /* PickupStoreLocationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF8C12024EAD52D001BB026 /* PickupStoreLocationInformation.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,7 @@
 		DA2B581B24EA6E3B00548761 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA2B582124EA711C00548761 /* PickupStoreLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupStoreLocationCell.swift; sourceTree = "<group>"; };
 		DA2B582224EA711C00548761 /* PickupStoreLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickupStoreLocationCell.xib; sourceTree = "<group>"; };
+		DA5D77CD24ED179D003C2A8A /* PickupStoreLocationCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupStoreLocationCellViewModel.swift; sourceTree = "<group>"; };
 		DAF8C11E24EAD515001BB026 /* PickupStoreLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupStoreLocation.swift; sourceTree = "<group>"; };
 		DAF8C12024EAD52D001BB026 /* PickupStoreLocationInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupStoreLocationInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +116,7 @@
 			children = (
 				DA2B582124EA711C00548761 /* PickupStoreLocationCell.swift */,
 				DA2B582224EA711C00548761 /* PickupStoreLocationCell.xib */,
+				DA5D77CD24ED179D003C2A8A /* PickupStoreLocationCellViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				DA2B581224EA6E3900548761 /* PickupStoreViewController.swift in Sources */,
 				DAF8C12124EAD52D001BB026 /* PickupStoreLocationInformation.swift in Sources */,
 				DA2B580E24EA6E3900548761 /* AppDelegate.swift in Sources */,
+				DA5D77CE24ED179D003C2A8A /* PickupStoreLocationCellViewModel.swift in Sources */,
 				DA2B581024EA6E3900548761 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

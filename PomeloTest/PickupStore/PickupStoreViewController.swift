@@ -12,6 +12,7 @@ import CoreLocation
 import PopupDialog
 
 class PickupStoreViewController: UIViewController {
+    // I've tried to move logic to viewModel but I got stuck with it. when tapped on getCurrentLocation it get another row of data I need to learn more of RxSwift to do that properly
     
     @IBOutlet weak var loadingIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var storeLocationTableView: UITableView!
@@ -172,8 +173,7 @@ extension PickupStoreViewController: UITableViewDataSource {
         
         let storeDistanceFromCurrentLocation = filteredLocations[indexPath.row].distanceFromCurrentLocation ??
             getDistanceFromCurrentLocation(destination: CLLocation(latitude: storeLatitude, longitude: storeLongitude))
-        
-        cell.configCell(store: filteredLocations[indexPath.row], distanceFromCurrentLocation: storeDistanceFromCurrentLocation)
+        cell.viewModel = PickupStoreLocationCellViewModel(store:  filteredLocations[indexPath.row], distanceFromCurrentLocation: storeDistanceFromCurrentLocation)
         return cell
     }
 }

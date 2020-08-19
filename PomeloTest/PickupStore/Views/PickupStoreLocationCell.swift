@@ -15,9 +15,15 @@ enum DistanceMetrics: String {
 
 class PickupStoreLocationCell: UITableViewCell {
     
+    var viewModel: PickupStoreLocationCellViewModel? {
+        didSet {
+            updateUI()
+        }
+    }
+    
     static let cellId = "PickupStoreLocationCell"
     static let nibName = "PickupStoreLocationCell"
-
+    
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var aliasLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -29,23 +35,21 @@ class PickupStoreLocationCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-    func configCell(store: PickupStoreLocationInformation, distanceFromCurrentLocation: Int) {
-        self.cityLabel.text = store.city
-        self.addressLabel.text = store.address1
-        self.aliasLabel.text = store.alias
-        if distanceFromCurrentLocation == -1 {
-            self.distanceStackView.isHidden = true
-        } else {
-            self.distanceStackView.isHidden = false
-            self.distanceFromCurrentLocationLabel.text = "\(distanceFromCurrentLocation)"
-        }
+    func updateUI() {
+        guard let viewModel = viewModel else { return }
+        self.cityLabel.text = viewModel.city
+        self.addressLabel.text = viewModel.address
+        self.aliasLabel.text = viewModel.alias
+        self.distanceStackView.isHidden = viewModel.shouldHideDistanceFromCurrentLocation()
+        self.distanceFromCurrentLocationLabel.text = "\(viewModel.distanceFromCurrentLocation)"
     }
-    
 }
+
+
