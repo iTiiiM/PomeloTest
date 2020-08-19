@@ -13,6 +13,7 @@ import PopupDialog
 
 class PickupStoreViewController: UIViewController {
     
+    @IBOutlet weak var loadingIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var storeLocationTableView: UITableView!
     
     let locationManager = CLLocationManager()
@@ -47,6 +48,8 @@ class PickupStoreViewController: UIViewController {
     
     func fetchPickupStoreLocations() {
         let parameter = ["filter[shop_id]" : 1]
+        loadingIndicatorView.isHidden = false
+        loadingIndicatorView.startAnimating()
         AF.request("https://api-staging.pmlo.co/v3/pickup-locations/", parameters: parameter).validate().responseJSON { (response) in
             switch (response.result) {
                 
@@ -66,6 +69,8 @@ class PickupStoreViewController: UIViewController {
                 let popUpDialog = PopupDialog(title: "Request error: \(error.localizedDescription)", message: "Please try again")
                 self.present(popUpDialog, animated: true)
             }
+            self.loadingIndicatorView.stopAnimating()
+            self.loadingIndicatorView.isHidden = true
         }
     }
     
@@ -81,7 +86,6 @@ class PickupStoreViewController: UIViewController {
                for var storeInformation in filteredLocations!  {
                    storeInformation.distanceFromCurrentLocation = getDistanceFromCurrentLocation(source: currentLocation, destination: CLLocation(latitude: storeInformation.latitude!, longitude: storeInformation.longitude!))
                    sortedLocations.append(storeInformation)
-                   print(sortedLocations)
                }
                filteredLocations = sortedLocations
                sortedLocations = []
@@ -91,6 +95,7 @@ class PickupStoreViewController: UIViewController {
        }
        
        func getCurrentLocation() {
+        
            let authorizationStatus = CLLocationManager.authorizationStatus()
            if authorizationStatus == .notDetermined {
                locationManager.requestWhenInUseAuthorization()
@@ -128,6 +133,8 @@ extension PickupStoreViewController: CLLocationManagerDelegate {
     }
     
     func startLocationManager() {
+        loadingIndicatorView.isHidden = false
+        loadingIndicatorView.startAnimating()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         locationManager.startUpdatingLocation()
@@ -139,6 +146,8 @@ extension PickupStoreViewController: CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             isUpdating = false
+            self.loadingIndicatorView.stopAnimating()
+            self.loadingIndicatorView.isHidden = true
         }
     }
 }

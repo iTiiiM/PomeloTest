@@ -25,12 +25,12 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XvR-qe-5pO">
                                 <rect key="frame" x="344" y="743" width="50" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="b7W-mI-fxd"/>
                                     <constraint firstAttribute="width" constant="50" id="dMU-iK-hz0"/>
                                 </constraints>
-                                <color key="tintColor" red="0.99607843139999996" green="0.34509803919999998" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="location" catalog="system"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -41,21 +41,27 @@
                                     <action selector="didTapGetCurrentLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wp1-Fc-u54"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="aDa-UP-qBD">
+                                <rect key="frame" x="197" y="144" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mq2-0Q-Aqy" secondAttribute="trailing" id="Qgw-AM-cKD"/>
                             <constraint firstItem="mq2-0Q-Aqy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TXM-a1-xz2"/>
+                            <constraint firstItem="aDa-UP-qBD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="Wrc-SZ-XrH"/>
                             <constraint firstItem="mq2-0Q-Aqy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Yzi-Qm-0qN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XvR-qe-5pO" secondAttribute="bottom" constant="20" id="dDm-ZG-Zbf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mq2-0Q-Aqy" secondAttribute="bottom" id="hCR-UB-x0h"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XvR-qe-5pO" secondAttribute="trailing" constant="20" id="rvh-Pl-O6X"/>
+                            <constraint firstItem="aDa-UP-qBD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="snB-Mb-kUs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="loadingIndicatorView" destination="aDa-UP-qBD" id="DqG-dC-xSS"/>
                         <outlet property="storeLocationTableView" destination="mq2-0Q-Aqy" id="CDa-ls-q4V"/>
                     </connections>
                 </viewController>
