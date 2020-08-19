@@ -84,7 +84,7 @@ class PickupStoreViewController: UIViewController {
                
                //So I create another variable to recieve it (WHICH IS BAD)
                for var storeInformation in filteredLocations!  {
-                   storeInformation.distanceFromCurrentLocation = getDistanceFromCurrentLocation(source: currentLocation, destination: CLLocation(latitude: storeInformation.latitude!, longitude: storeInformation.longitude!))
+                   storeInformation.distanceFromCurrentLocation = getDistanceFromCurrentLocation(destination: CLLocation(latitude: storeInformation.latitude!, longitude: storeInformation.longitude!))
                    sortedLocations.append(storeInformation)
                }
                filteredLocations = sortedLocations
@@ -112,11 +112,11 @@ class PickupStoreViewController: UIViewController {
            }
        }
        
-       func getDistanceFromCurrentLocation(source: CLLocation?, destination: CLLocation) -> Int {
-           if source == nil {
+       func getDistanceFromCurrentLocation(destination: CLLocation) -> Int {
+           if currentLocation == nil {
                return -1
            } else {
-               return Int(round((source!.distance(from: destination) / 1000)))
+            return Int(round(((currentLocation?.distance(from: destination))! / 1000)))
            }
        }
 }
@@ -170,7 +170,8 @@ extension PickupStoreViewController: UITableViewDataSource {
             let storeLongitude = filteredLocations[indexPath.row].longitude
             else { return UITableViewCell() }
         
-        let storeDistanceFromCurrentLocation = getDistanceFromCurrentLocation(source: currentLocation, destination: CLLocation(latitude: storeLatitude, longitude: storeLongitude))
+        let storeDistanceFromCurrentLocation = filteredLocations[indexPath.row].distanceFromCurrentLocation ??
+            getDistanceFromCurrentLocation(destination: CLLocation(latitude: storeLatitude, longitude: storeLongitude))
         
         cell.configCell(store: filteredLocations[indexPath.row], distanceFromCurrentLocation: storeDistanceFromCurrentLocation)
         return cell
